@@ -7,7 +7,7 @@ function App() {
 
         function onDragStart() {
             setTimeout(
-                () => setTimeout(() => this.classList.add("invicible"), 0),
+                () => setTimeout(() => this.classList.add("dragging"), 0),
                 0
             );
         }
