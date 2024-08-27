@@ -53,7 +53,9 @@ functions which expose active state of the link. Used for styling purpose based 
 10) Use `end` prop in NavLink to exactly match the path so that if the children paths are active then the parent path is also wont be active. 
 Lesson 9:
 11) Use Navigate component to immediately navigate to any path.
-
+Lesson 10:
+12) Use `useNavigate` hook to navigate to any path based on actions.
+13) pass any values between `-1` to `-n` to the navigate function to navigate back.
 */
 
 export default App;
