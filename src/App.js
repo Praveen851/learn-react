@@ -1,10 +1,11 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { BookRoutes } from "./pages/BookRoutes";
 import "./App.css";
 
 function App() {
+    const location = useLocation();
     return (
         <>
             <Routes>
@@ -13,7 +14,7 @@ function App() {
             <nav>
                 <ul>
                     <li>
-                        <NavLink to="/">
+                        <NavLink to="/" state={"Hello Home!"}>
                             {({ isActive }) =>
                                 isActive ? "Active Home" : "Inactive Home"
                             }
@@ -26,6 +27,7 @@ function App() {
                     </li>
                 </ul>
             </nav>
+            {location.state}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/books/*" element={<BookRoutes />}></Route>
@@ -56,6 +58,10 @@ Lesson 9:
 Lesson 10:
 12) Use `useNavigate` hook to navigate to any path based on actions.
 13) pass any values between `-1` to `-n` to the navigate function to navigate back.
+Lesson12: Any value that is passed to state prop in Link/NavLink or through useNavigate config options -> state can
+be accessed in the component by using `useLocation` hook. Used to pass data from one component to another.
+Bonus:
+14) `useHistory` is deprecated and `useNavigate` is used instead.
 */
 
 export default App;
