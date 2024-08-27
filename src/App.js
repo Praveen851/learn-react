@@ -1,40 +1,16 @@
-import { Link, Route, Routes, useRoutes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 
 import { NotFound } from "./pages/NotFound";
 
-import { Book } from "./pages/Book";
 import { BookRoutes } from "./pages/BookRoutes";
-import { BookList } from "./pages/BookList";
-import { NewBook } from "./pages/NewBook";
 
 function App() {
-    const routes = useRoutes([
-        {
-            path: "/",
-            element: <Home />,
-        },
-        {
-            path: "/books",
-            element: <BookList />,
-            children: [
-                {
-                    path: ":id",
-                    element: <Book />,
-                },
-                { path: "new", element: <NewBook /> },
-            ],
-        },
-        {
-            path: "*",
-            element: <NotFound />,
-        },
-    ]);
     return (
         <>
-            {/* <Routes>
-                <Route path="/books" element={<h1>Extra content</h1>}></Route>
-            </Routes> */}
+            <Routes>
+                <Route  path="/books" element={<h1>Extra content</h1>}></Route>
+            </Routes>
             <nav>
                 <ul>
                     <li>
@@ -45,12 +21,11 @@ function App() {
                     </li>
                 </ul>
             </nav>
-            {routes}
-            {/* <Routes>
+            <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/books/*" element={<BookRoutes />}></Route>
                 <Route path="*" element={<NotFound />} />
-            </Routes> */}
+            </Routes>
         </>
     );
 }
