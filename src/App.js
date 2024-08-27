@@ -1,23 +1,35 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
-
 import { NotFound } from "./pages/NotFound";
-
 import { BookRoutes } from "./pages/BookRoutes";
+import "./App.css";
 
 function App() {
     return (
         <>
             <Routes>
-                <Route  path="/books" element={<h1>Extra content</h1>}></Route>
+                <Route path="/books" element={<h1>Extra content</h1>}></Route>
             </Routes>
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <NavLink
+                            style={({ isActive }) => {
+                                return isActive
+                                    ? { color: "green" }
+                                    : { color: "violet" };
+                            }}
+                            to="/"
+                        >
+                            {({ isActive }) =>
+                                isActive ? "Active Home" : "Inactive Home"
+                            }
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/books">Books</Link>
+                        <NavLink end to="/books">
+                            Books
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
@@ -41,6 +53,10 @@ Lesson 7:
 5) Link tag -> `replace` prop to replace the current component with the new navigated component.
 6) Link tag -> `reloadDocument` prop to reload and render the new component.
 7) Link tag -> `state` prop to pass data that wont shown in url bar.
+8) NavLink tag -> has all the features that Link tag has, additional props -> className, style, children all of these take
+functions which expose active state of the link. Used for styling purpose based on the acive state.
+9) All the NavLink components have .active className when it is active we can use that classname to style it with css.
+10) Use `end` prop in NavLink to exactly match the path so that if the children paths are active then the parent path is also wont be active. 
 */
 
 export default App;
