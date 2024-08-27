@@ -1,13 +1,16 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { BookList } from "./pages/BookList";
-import { Book } from "./pages/Book";
-import { NewBook } from "./pages/NewBook";
+
 import { NotFound } from "./pages/NotFound";
+
+import { BookRoutes } from "./pages/BookRoutes";
 
 function App() {
     return (
         <>
+            <Routes>
+                <Route  path="/books" element={<h1>Extra content</h1>}></Route>
+            </Routes>
             <nav>
                 <ul>
                     <li>
@@ -20,9 +23,7 @@ function App() {
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/books" element={<BookList />} />
-                <Route path="/book/:id" element={<Book />} />
-                <Route path="/book/new" element={<NewBook />} />
+                <Route path="/books/*" element={<BookRoutes />}></Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </>
@@ -31,9 +32,10 @@ function App() {
 
 /* 
 Note:
-1) Prior to react router 6 /book/new would have also treated it as dynamic and hence <Book/> component would have been rendered
-instead of <NewBook/> component based on the order 
-2) when the path is set "*" it matches to anything in the url, so we can use it to render 404 page by placing it at last.
+1) use index prop to set the component for the root path
+2) You can remove the path of the parent "/books" then we can use it wrap any components without a common parent. Useful for showing navbar.
+3) To show extra content use route component to render multiple element for the same route.
+4) Use location prop in the routes to hardcode the current location 
 */
 
 export default App;
