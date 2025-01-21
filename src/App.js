@@ -38,6 +38,7 @@ function App() {
 }
 
 /* 
+https://www.youtube.com/watch?v=Ul3y1LXxzdU
 Note:
 Lesson  5:
 1) use index prop to set the component for the root path.
